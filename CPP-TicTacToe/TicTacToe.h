@@ -5,6 +5,7 @@
 
 class TicTacToe : public Game {
 private:
+	// Set up game board, as well as variables for the player and game turns
 
 	char m_board[9] = { ' ', ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' };
 	int m_currentPlayer = 1;

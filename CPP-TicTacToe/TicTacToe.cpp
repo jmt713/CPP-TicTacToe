@@ -69,31 +69,36 @@ void TicTacToe::TakeTurn()
 
     // Determine and save current player
     int currentPlayer = m_currentPlayer; 
+
+    // Display if it's Player 1 or Player 2's turn
     std::cout << "It's Player " << currentPlayer << "'s turn.\n";
+
     // Set up X for player 1 and O for player 2
     if (currentPlayer == 1) { playerLetter = 'X'; }
     else { playerLetter = 'O'; }
-    // Re-prompt user if they don't pick a spot on the board
+
+    // This will ask the player to pick a valid spot on the board
     while (playerChoice < 1 || playerChoice > 9)
     {
         std::cout << "Please select a spot on the board(1-9): ";
         std::cin >> playerChoice;
 
+        // Ask the player again if they don't pick betweeen 1-9 on the board
         if (playerChoice < 1 || playerChoice > 9) {
             std::cout << "Please select a valid spot on the board(1-9).\n";
         }
-        // Re-prompt user if the spot they choose is already taken
+        // Ask the player again if they pick a spot on the board that has already been taken
         else if (m_board[playerChoice - 1] == 'X' || m_board[playerChoice - 1] == 'O') {
             std::cout << "Please select an empty spot on the board.\n";
             playerChoice = 0;
         }
-        // Otherwise, put mark on the board
+        // If the user picks a valid and empty spot on the board, place an X or O
         else {
             m_board[playerChoice - 1] = playerLetter;
         }
     }
 
-    // Switch players after the turn
+    // Switch players after each turn
     if (m_currentPlayer == 1) {
         m_currentPlayer = 2;
     }
@@ -101,6 +106,6 @@ void TicTacToe::TakeTurn()
         m_currentPlayer = 1;
     }
 
-    // Increment turn counter
+    // Increase turn counter by 1 
     m_currentTurn += 1;
 }
